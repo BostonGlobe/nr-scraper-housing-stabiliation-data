@@ -27,8 +27,6 @@ else:
 
 report_rows = report_table.find_all('tr')
 
-print(report_rows)
-
 data = {}
 
 for row in report_rows:
@@ -41,13 +39,13 @@ for row in report_rows:
 
     data[input_type] = input_value
 
-    print(input_type, input_value)
-
 with open('data/housing-stabilization.csv', 'r') as data_object:
   final_row = data_object.readlines()[-1]
+  print(final_row)
 
-if final_row[0] != data['txtEntryDate']:
-  with open('data/housing-stabilization.csv', 'a', newline='') as data_object:
+print(final_row[0], data['txtEntryDate'])
+if data['txtEntryDate'] not in final_row:
+  with open('data/housing-stabilization.csv', 'a') as data_object:
     dictwriter_object = DictWriter(data_object, fieldnames=field_names)
     dictwriter_object.writerow(data)
   
