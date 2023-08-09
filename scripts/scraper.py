@@ -22,7 +22,10 @@ HEADERS = {
 def parse_date(date: str):
   """Parses a string date
 
-    e.g. "Tuesday, August 8, 2023" --> "8/8/2023"
+    Example: 
+    ```python
+      parse_date("Tuesday, August 8, 2023")  # 8/8/2023
+    ```
 
   Args:
       date (str): The date to parse
@@ -30,7 +33,6 @@ def parse_date(date: str):
       str: The parsed date
   """
   parsed_date = datetime.strptime(date, "%A, %B %d, %Y")
-  # Format the date in the desired output format
   return parsed_date.strftime("%-m/%-d/%Y")
 
 request = requests.get('https://hed-dhsentry.azurewebsites.net/default.aspx', HEADERS)
